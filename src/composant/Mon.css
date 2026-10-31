@@ -1,0 +1,124 @@
+/* Réinitialisation simple */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    color: #222;
+}
+
+/* Mise en page globale avec CSS Grid
+   3 colonnes : gauche | centre | droite
+   3 lignes : banner | corps | footer */
+.layout {
+    display: grid;
+    grid-template-columns: 220px 1fr 220px;
+    grid-template-rows: auto 1fr auto;
+    grid-template-areas:
+        "banner  banner  banner"
+        "sidebar content right"
+        "footer  footer  footer";
+    min-height: 100vh;
+}
+
+/* Association de chaque bloc à sa zone */
+.banner {
+    grid-area: banner;
+}
+
+.sidebar {
+    grid-area: sidebar;
+}
+
+.content {
+    grid-area: content;
+}
+
+.right-column {
+    grid-area: right;
+}
+
+.footer {
+    grid-area: footer;
+}
+
+/* Banner */
+.banner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 24px;
+    background: #1f3a5f;
+    color: #fff;
+}
+
+.banner nav a {
+    color: #fff;
+    margin-left: 16px;
+    text-decoration: none;
+}
+
+.banner nav a:hover {
+    text-decoration: underline;
+}
+
+/* Colonnes latérales */
+.sidebar,
+.right-column {
+    padding: 16px;
+    background: #eef1f5;
+}
+
+.sidebar ul {
+    list-style: none;
+    margin-top: 8px;
+}
+
+.sidebar li {
+    margin-bottom: 8px;
+}
+
+.sidebar a {
+    color: #1f3a5f;
+    text-decoration: none;
+}
+
+.right-column p {
+    margin-top: 8px;
+}
+
+/* Contenu central */
+.content {
+    padding: 16px 24px;
+}
+
+.carte {
+    margin-top: 12px;
+    padding: 12px;
+    border: 1px solid #bbb;
+    border-radius: 6px;
+}
+
+/* Footer */
+.footer {
+    padding: 16px;
+    text-align: center;
+    background: #1f3a5f;
+    color: #fff;
+}
+
+/* Adaptation mobile : tout passe en une seule colonne */
+@media (max-width: 700px) {
+    .layout {
+        grid-template-columns: 1fr;
+        grid-template-areas:
+            "banner"
+            "sidebar"
+            "content"
+            "right"
+            "footer";
+    }
+}
